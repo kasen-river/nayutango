@@ -1,0 +1,96 @@
+/* 全体の背景 */
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f5f5f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+#app {
+  text-align: center;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* フォントを読み込む（もしファイルを持っている場合。なければスキップ可） */
+@font-face {
+  font-family: 'Harenosora';
+  src: url('/harenosora.otf'); /* ファイルをプロジェクト直下に置いた場合 */
+}
+
+.square-box {
+  width: 300px;
+  height: 300px;
+  margin: 20px auto;
+  border-radius: 40px;
+  
+  /* 背景色を指定 */
+  background-color: #B4D3EF; 
+  
+  border: none; /* 枠線が不要なら消す */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* 右下文字の基準にするために必要 */
+  overflow: hidden;
+}
+
+/* メインの単語フォント */
+#gacha-display {
+  font-family: 'Harenosora', "Sawarabi Mincho", "Hiragino Mincho ProN", serif;
+  font-size: 32px;
+  color: #333;
+  z-index: 2;
+}
+
+/* 右下の固定文字 */
+.square-box::after {
+  content: "恒河沙那由他の中の単語";
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-family: 'Harenosora', serif;
+  font-size: 12px; /* 単語より小さく */
+  color: rgba(0, 0, 0, 0.5); /* 少し透けさせておしゃれに */
+  letter-spacing: 0.05em;
+}
+
+
+/* ボタンの横並び */
+.button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+button {
+  background-color: #ff4757;
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.1s;
+  box-shadow: 0 5px 0 #cf3745;
+}
+
+button:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #cf3745;
+}
+
+/* 保存ボタンだけ色を変える */
+#save-button {
+  background-color: #2ed573;
+  box-shadow: 0 5px 0 #26af5c;
+}
