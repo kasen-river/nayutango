@@ -1,6 +1,7 @@
-/* 全体の背景 */
+/* 1. 全体の背景と基本フォント */
 body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  /* 全体のフォントをロゴに合わせる */
+  font-family: 'Harenosora', "Sawarabi Mincho", "Hiragino Mincho ProN", serif;
   background-color: #f5f5f7;
   display: flex;
   justify-content: center;
@@ -17,80 +18,103 @@ body {
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-/* フォントを読み込む（もしファイルを持っている場合。なければスキップ可） */
-@font-face {
-  font-family: 'Harenosora';
-  src: url('/harenosora.otf'); /* ファイルをプロジェクト直下に置いた場合 */
+/* タイトルの洗練 */
+h1 {
+  font-weight: normal;
+  letter-spacing: 0.2em; /* 文字の間隔を広げてロゴっぽく */
+  color: #2c3e50;
+  margin-bottom: 30px;
 }
 
+/* 2. フォント読み込み設定 */
+@font-face {
+  font-family: 'Harenosora';
+  src: url('/harenosora.otf'); 
+}
+
+/* 3. ガチャ表示エリア */
 .square-box {
   width: 300px;
   height: 300px;
   margin: 20px auto;
   border-radius: 40px;
-  
-  /* 背景色を指定 */
   background-color: #B4D3EF; 
-  
-  border: none; /* 枠線が不要なら消す */
+  border: none;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative; /* 右下文字の基準にするために必要 */
+  position: relative; 
   overflow: hidden;
 }
 
-/* メインの単語フォント */
 #gacha-display {
-  font-family: 'Harenosora', "Sawarabi Mincho", "Hiragino Mincho ProN", serif;
+  font-family: 'Harenosora', serif;
   font-size: 32px;
   color: #333;
   z-index: 2;
+  letter-spacing: 0.05em;
 }
 
-/* 右下の固定文字 */
+/* 右下のロゴテキスト（ここが基準） */
 .square-box::after {
   content: "恒河沙那由他の中の単語";
   position: absolute;
   bottom: 20px;
   right: 20px;
   font-family: 'Harenosora', serif;
-  font-size: 12px; /* 単語より小さく */
-  color: rgba(0, 0, 0, 0.5); /* 少し透けさせておしゃれに */
-  letter-spacing: 0.05em;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.4); 
+  letter-spacing: 0.1em; /* 少し広げてより洗練 */
 }
 
-
-/* ボタンの横並び */
+/* 4. 透明感のあるボタンのグループ */
 .button-group {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
+/* ボタン全体：グラスモーフィズム（透明感）の適用 */
 button {
-  background-color: #ff4757;
+  /* 透明感のポイント：背景を半透明にし、後ろをぼかす */
+  background: rgba(89, 131, 168, 0.15); /* ほんのり青い透明 */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  color: #5983a8;
+  border: 1px solid rgba(89, 131, 168, 0.3); /* 細い枠線で引き締める */
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-family: 'Harenosora', serif; /* フォントを統一 */
+  font-weight: normal; /* 明朝体は細い方が綺麗 */
+  letter-spacing: 0.1em;
+  border-radius: 12px; /* 楕円より少し角がある方が現代的 */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0; /* gapで制御するためmarginは0に */
+}
+
+/* マウスを乗せたとき */
+button:hover {
+  background: rgba(89, 131, 168, 0.25);
+  transform: translateY(-2px);
+  letter-spacing: 0.2em; /* ふわっと広がる演出 */
+}
+
+/* クリックしたとき */
+button:active {
+  transform: translateY(1px);
+}
+
+/* ガチャを回すボタンだけ少し色を濃くしてメインらしく */
+#gacha-button {
+  background: rgba(89, 131, 168, 0.8);
   color: white;
   border: none;
-  padding: 15px 25px;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: transform 0.1s;
-  box-shadow: 0 5px 0 #cf3745;
 }
 
-button:active {
-  transform: translateY(3px);
-  box-shadow: 0 2px 0 #cf3745;
-}
-
-/* 保存ボタンだけ色を変える */
-#save-button {
-  background-color: #2ed573;
-  box-shadow: 0 5px 0 #26af5c;
+#gacha-button:hover {
+  background: rgba(89, 131, 168, 1);
 }

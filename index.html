@@ -3,24 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>単語ガチャ</title>
+    <title></title>
+    <link rel="stylesheet" href="src/style.css">
   </head>
   <body>
     <div id="app">
-      <h1>単語ガチャ</h1>
-      <p>現在のリスト数: <span id="word-count">0</span></p>
+      <h1>恒河沙那由他の中の単語</h1>
+      <p>現在の単語数： <span id="word-count">0</span></p>
       
       <div id="gacha-display" class="square-box">
-        読み込み中...
+        読み込み中
       </div>
 
       <div class="button-group">
-        <button id="gacha-button">ガチャを回す！</button>
-        <button id="save-button">結果を保存</button>
+        <button id="gacha-button">単語を取り出す</button>
+        <button id="save-button">単語を保存</button>
       </div>
 
-      <p>累計回数: <span id="total-count">0</span></p>
+      <p>単語が取り出された回数： <span id="total-count">0</span></p>
     </div>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="src/main.js"></script>
   </body>
 </html>
