@@ -1,24 +1,42 @@
-/* 筆記体（Google Fontsからお洒落なのを一つ借りておきます） */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-
 /* 全体の背景と基本フォント */
 body {
   /* 全体のフォント */
-  font-family: 'Harenosora', "Sawarabi Mincho", "Hiragino Mincho ProN", serif;
+  font-family: "Sawarabi Mincho", "Hiragino Mincho ProN", serif;
   background-color: #f5f5f7;
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* 要素を縦に並べる */
   align-items: center;
+  text-align: center;
+  justify-content: flex-start;
+  padding: 40px 20px; /* 上下に余白を作る */
   min-height: 100vh;
   margin: 0;
+  touch-action: manipulation; /* ズーム対策 */
 }
 
+/* ガチャの四角 */
 #app {
-  text-align: center;
+  width: 100%;
+  max-width: 400px;
   background: white;
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  margin-bottom: 20px; /* 下の四角との間隔 */
+}
+
+/* 投稿用の四角 */
+.add-form {
+  width: 100%;
+  max-width: 400px; /* ガチャの四角と幅を合わせる */
+  background: rgba(255, 255, 255, 0.6); /* 少し透明にして「サブ感」を出す */
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
 }
 
 /* タイトル */
@@ -29,11 +47,6 @@ h1 {
   margin-bottom: 30px;
 }
 
-/* フォント読み込み設定 */
-@font-face {
-  font-family: 'Harenosora';
-  src: url('/harenosora.otf'); 
-}
 
 /* ガチャ表示エリア */
 .square-box {
@@ -52,7 +65,6 @@ h1 {
 }
 
 #gacha-display {
-  font-family: 'Harenosora', serif;
   font-size: 32px;
   color: #333;
   z-index: 2;
@@ -65,7 +77,6 @@ h1 {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  font-family: 'Harenosora', serif;
   font-size: 12px;
   color: rgba(0, 0, 0, 0.4); 
   letter-spacing: 0.1em; /* 少し広げてより洗練 */
@@ -90,7 +101,6 @@ button {
   border: 1px solid rgba(89, 131, 168, 0.3); /* 細い枠線で引き締める */
   padding: 12px 28px;
   font-size: 1rem;
-  font-family: 'Harenosora', serif; /* フォントを統一 */
   font-weight: normal; /* 明朝体は細い方が綺麗 */
   letter-spacing: 0.1em;
   border-radius: 12px; /* 楕円より少し角がある方が現代的 */
@@ -122,10 +132,90 @@ button:active {
   background: rgba(89, 131, 168, 1);
 }
 
+/* 投稿フォーム全体のコンテナ */
+.add-form {
+  margin-top: 50px; /* カウント表示との間隔 */
+  padding-top: 30px;
+  border-top: 1px solid #eee; /* 上に細い線を入れて境界を作る */
+  display: flex;
+  flex-direction: column; /* 縦並びにする */
+  align-items: center;
+  gap: 12px; /* 要素同士の隙間 */
+}
+
+/* 説明文 */
+.form-notice {
+  font-size: 14px;            /* 少し大きく */
+  color: #555;                /* 薄すぎず、単語数カウントに近い色 */
+  opacity: 1;                 /* 透明度をなくしてハッキリさせる */
+  margin-bottom: 12px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+input {
+  -webkit-appearance: none; /* iOS特有のスタイルをリセット */
+  appearance: none;
+}
+
+/* placeholder（入力欄の中の文字）の色を薄くする */
+/* ブラウザごとに書き方が必要です */
+input::placeholder {
+  color: rgba(0, 0, 0, 0.2);  /* かなり薄いグレー */
+}
+
+/* Safari / Chrome用 */
+input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+/* Firefox用 */
+input::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+
+/* 入力フォーム（横幅いっぱいに広げる） */
+.add-form input {
+  width: 100%;
+  max-width: 280px; /* スマホでちょうどいい幅 */
+  background: rgba(0, 0, 0, 0.03); /* 白背景ではなく、ごく薄いグレーで「サブ感」を出す */
+  border: 1px solid rgba(89, 131, 168, 0.2);
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 16px; /* スマホでズームされないためのサイズ */
+  box-sizing: border-box; /* パディングを含めた幅計算 */
+  color: #333;
+}
+
+/* 投稿ボタン（メインボタンより小さく、落ち着いた色に） */
+#add-button {
+  width: 100%;
+  max-width: 280px;
+  background: #95a5a6; /* 控えめなグレー */
+  color: white;
+  padding: 10px;
+  font-size: 0.9rem;
+  border: none;
+  box-shadow: none; /* 浮き出しをなくしてフラットに */
+}
+
+#add-button:hover {
+  background: #7f8c8d;
+  letter-spacing: 0.1em; /* 控えめな演出 */
+}
+
 /* 筆文字（玉ねぎ楷書） */
 @font-face {
   font-family: 'Tamanegi';
   src: url('/玉ねぎ楷書激無料版v7改.ttf') format('truetype');
+}
+
+/* 筆記体（Cotillio） */
+@font-face {
+  font-family: 'Cotillio';
+  src: url('/COTILLIO.ttf') format('truetype');
+  font-display: swap; /* 読み込みまで代わりのフォントを出す設定 */
 }
 
 
@@ -139,7 +229,11 @@ button:active {
 
 /* 筆記体用クラス */
 .font-cursive {
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Cotillio', cursive;
+  /* 筆記体は線が細いことが多いので、少し大きく */
+  font-size: 1.3em; 
+  letter-spacing: 0.05em;
+  font-weight: normal;
 }
 
 /* 七色に光るアニメーション */

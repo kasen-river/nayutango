@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     
     <title>恒河沙那由単語</title>
     <meta name="description" content="意識の外の単語">
@@ -39,6 +39,14 @@
 
       <p>単語が取り出された回数： <span id="total-count">0</span></p>
     </div>
+
+    <div class="add-form">
+      <p class="form-notice">単語を追加できる<br>私の一存で削除することがある</p>
+      <input type="text" id="new-word" placeholder="単語">
+      <input type="text" id="user-name" placeholder="名前（任意）">
+      <button id="add-button">追加</button>
+    </div>
+
     <script type="module" src="src/main.js"></script>
   </body>
 </html>
