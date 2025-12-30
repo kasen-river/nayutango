@@ -16,8 +16,8 @@ body {
 
 /* ガチャの四角 */
 #app {
-  width: 100%;
-  max-width: 400px;
+  width: 90%;
+  max-width: 320px;
   background: white;
   padding: 40px;
   border-radius: 20px;
@@ -27,8 +27,8 @@ body {
 
 /* 投稿用の四角 */
 .add-form {
-  width: 100%;
-  max-width: 400px; /* ガチャの四角と幅を合わせる */
+  width: 90%;
+  max-width: 320px; /* ガチャの四角と幅を合わせる */
   background: rgba(255, 255, 255, 0.6); /* 少し透明にして「サブ感」を出す */
   padding: 25px;
   border-radius: 20px;
@@ -37,6 +37,8 @@ body {
   flex-direction: column;
   gap: 12px;
   box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* タイトル */
@@ -107,6 +109,9 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
   margin: 0; /* gapで制御するためmarginは0に */
+  -webkit-user-select: none; /* Safari用 */
+  user-select: none;         /* 標準の文字選択禁止 */
+  -webkit-tap-highlight-color: transparent; /* タップ時の青い背景も消す（iPhone用） */
 }
 
 /* マウスを乗せたとき */

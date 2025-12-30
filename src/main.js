@@ -110,7 +110,7 @@ async function addWord() {
   
   const word = escapeHTML(rawWord);
   const name = escapeHTML(rawName);
-  if (!word) return alert("単語を入力してください");
+  if (!word) return alert("無は追加できない");
 
   addBtn.disabled = true; // 連打防止
   addBtn.innerText = "送信中...";
@@ -120,13 +120,13 @@ async function addWord() {
       method: 'POST',
       body: JSON.stringify({ word: word, name: name })
     });
-    alert("スプレッドシートに追加しました！");
+    alert("単語帳に追加した");
     newWordInput.value = "";
   } catch (e) {
     alert("エラーが発生しました");
   } finally {
     addBtn.disabled = false;
-    addBtn.innerText = "投稿";
+    addBtn.innerText = "追加";
   }
 }
 
