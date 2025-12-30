@@ -1,6 +1,9 @@
-/* 1. 全体の背景と基本フォント */
+/* 筆記体（Google Fontsからお洒落なのを一つ借りておきます） */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+/* 全体の背景と基本フォント */
 body {
-  /* 全体のフォントをロゴに合わせる */
+  /* 全体のフォント */
   font-family: 'Harenosora', "Sawarabi Mincho", "Hiragino Mincho ProN", serif;
   background-color: #f5f5f7;
   display: flex;
@@ -18,7 +21,7 @@ body {
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-/* タイトルの洗練 */
+/* タイトル */
 h1 {
   font-weight: normal;
   letter-spacing: 0.2em; /* 文字の間隔を広げてロゴっぽく */
@@ -26,13 +29,13 @@ h1 {
   margin-bottom: 30px;
 }
 
-/* 2. フォント読み込み設定 */
+/* フォント読み込み設定 */
 @font-face {
   font-family: 'Harenosora';
   src: url('/harenosora.otf'); 
 }
 
-/* 3. ガチャ表示エリア */
+/* ガチャ表示エリア */
 .square-box {
   width: 300px;
   height: 300px;
@@ -58,7 +61,7 @@ h1 {
 
 /* 右下のロゴテキスト（ここが基準） */
 .square-box::after {
-  content: "恒河沙那由他の中の単語";
+  content: "恒河沙那由単語";
   position: absolute;
   bottom: 20px;
   right: 20px;
@@ -68,7 +71,7 @@ h1 {
   letter-spacing: 0.1em; /* 少し広げてより洗練 */
 }
 
-/* 4. 透明感のあるボタンのグループ */
+/* ボタンのグループ */
 .button-group {
   display: flex;
   gap: 15px;
@@ -117,4 +120,39 @@ button:active {
 
 #gacha-button:hover {
   background: rgba(89, 131, 168, 1);
+}
+
+/* 筆文字（玉ねぎ楷書） */
+@font-face {
+  font-family: 'Tamanegi';
+  src: url('/玉ねぎ楷書激無料版v7改.ttf') format('truetype');
+}
+
+
+/* --- 特殊クラス --- */
+
+/* 筆文字用クラス */
+.font-fude {
+  font-family: 'Tamanegi', serif;
+  font-size: 1.2em; /* 筆文字は少し大きくすると映えます */
+}
+
+/* 筆記体用クラス */
+.font-cursive {
+  font-family: 'Dancing Script', cursive;
+}
+
+/* 七色に光るアニメーション */
+.font-rainbow {
+  font-weight: bold;
+  background: linear-gradient(to right, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: rainbow 2s linear infinite;
+}
+
+@keyframes rainbow {
+  to { background-position: 200% center; }
 }

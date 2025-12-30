@@ -19,7 +19,7 @@ async function loadData() {
     wordList = data.words;
     wordCountText.innerText = wordList.length;
     totalCountText.innerText = data.count;
-    display.innerText = "準備完了！";
+    display.innerText = "準備完了";
   } catch (error) {
     display.innerText = "通信エラー";
   }
@@ -29,7 +29,27 @@ async function loadData() {
 async function playGacha() {
   if (wordList.length === 0) return;
   const randomIndex = Math.floor(Math.random() * wordList.length);
-  display.innerText = wordList[randomIndex];
+  let word = wordList[randomIndex];
+
+  // --- 特殊装飾の変換処理 ---
+  
+  // 七色 (!文字!)
+  word = word.replace(/!([^!]+)!/g, '<span class="font-rainbow">$1</span>');
+  
+  // 筆文字 ({文字})
+  word = word.replace(/\{([^}]+)\}/g, '<span class="font-fude">$1</span>');
+  
+  // 筆記体 (~文字~) 
+  word = word.replace(/~([^~]+)~/g, '<span class="font-cursive">$1</span>');
+
+  // ルビ付きのパターンかチェックする
+  if (word.includes('[') && word.includes(']')) {
+    // ルビがある場合は、HTMLに変換して表示
+    display.innerHTML = word.replace(/([^\[]+)\[([^\]]+)\]/g, '<ruby>$1<rt>$2</rt></ruby>');
+  } else {
+    // ルビがない普通の単語なら、そのまま表示
+    display.innerHTML = word;
+  }
 
   try {
     fetch(API_URL, { method: 'POST', mode: 'no-cors' });
@@ -41,7 +61,7 @@ async function playGacha() {
 function saveImage() {
   html2canvas(display).then(canvas => {
     const link = document.createElement('a');
-    link.download = 'gacha-result.png';
+    link.download = 'nayutango.png';
     link.href = canvas.toDataURL();
     link.click();
   });
