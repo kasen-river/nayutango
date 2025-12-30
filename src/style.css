@@ -279,10 +279,14 @@ input::-moz-placeholder {
   font-weight: bold;
   background: linear-gradient(to right, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
   background-size: 200% auto;
+  background-repeat: no-repeat;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   animation: rainbow 2s linear infinite;
+  /* スマホでの回り込み防止 */
+  display: inline-block; 
+  white-space: nowrap;
 }
 
 @keyframes rainbow {
