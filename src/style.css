@@ -220,6 +220,29 @@ input::-moz-placeholder {
   letter-spacing: 0.1em; /* 控えめな演出 */
 }
 
+.contact-info {
+  margin-top: 60px;    /* 箱との隙間を大きく広げる（40pxから60pxへ） */
+  margin-bottom: 60px; /* 画面最下部にもゆとりを持たせる */
+  font-size: 14px;     /* ご希望のサイズに変更 */
+  color: #555;         /* 他のシステム表示と同じ色に統一 */
+  text-align: center;
+  width: 100%;
+  line-height: 1.6;
+  font-family: inherit; /* フォントも明朝体で統一 */
+}
+
+.contact-info a {
+  color: #555;         /* リンクの色もテキストと同じにする */
+  text-decoration: none;
+  border-bottom: 1px solid rgba(85, 85, 85, 0.3); /* 下線も同じ色で薄く引く */
+  padding-bottom: 1px;
+  transition: opacity 0.3s;
+}
+
+.contact-info a:hover {
+  opacity: 0.6;        /* 重ねたときだけ少し薄くして反応を示す */
+}
+
 /* 筆文字（玉ねぎ楷書） */
 @font-face {
   font-family: 'Tamanegi';
