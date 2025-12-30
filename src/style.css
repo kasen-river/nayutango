@@ -279,7 +279,7 @@ input::-moz-placeholder {
   font-weight: bold;
   background: linear-gradient(to right, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
   background-size: 200% auto;
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -290,5 +290,6 @@ input::-moz-placeholder {
 }
 
 @keyframes rainbow {
-  to { background-position: 200% center; }
+  from { background-position: 0% center; } /* 開始位置を明示 */
+  to { background-position: -200% center; }
 }
