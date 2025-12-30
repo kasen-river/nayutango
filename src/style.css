@@ -23,6 +23,8 @@ body {
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.05);
   margin-bottom: 20px; /* 下の四角との間隔 */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* 投稿用の四角 */
