@@ -24,7 +24,7 @@ html, body {
 /* ガチャの四角 */
 #app {
   width: 90%;
-  max-width: 390px;
+  max-width: 400px;
   background: white;
   padding: 15px;
   border-radius: 20px;
