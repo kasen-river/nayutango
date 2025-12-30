@@ -3,26 +3,34 @@ body {
   /* 全体のフォント */
   font-family: "Sawarabi Mincho", "Hiragino Mincho ProN", serif;
   background-color: #f5f5f7;
+  margin: 0;
+  padding: 20px 0 ; /* 上下に余白を作る */
+  width: 100vw;    /* 画面幅ぴったりに固定 */
+  overflow-x: hidden; /* 横揺れを物理的に禁止する */
   display: flex;
   flex-direction: column; /* 要素を縦に並べる */
   align-items: center;
   text-align: center;
   justify-content: flex-start;
-  padding: 40px 20px; /* 上下に余白を作る */
   min-height: 100vh;
-  margin: 0;
   touch-action: manipulation; /* ズーム対策 */
+  
+}
+
+html, body {
+  touch-action: pan-x pan-y; /* 1本指のスクロールは許可し、ダブルタップズーム（manipulation）を実質無効化 */
 }
 
 /* ガチャの四角 */
 #app {
   width: 90%;
-  max-width: 320px;
+  max-width: 390px;
   background: white;
-  padding: 40px;
+  padding: 15px;
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.05);
   margin-bottom: 20px; /* 下の四角との間隔 */
+  box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
 }
